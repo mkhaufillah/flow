@@ -164,6 +164,7 @@ Apply this command
 
 ```sh
 ssh-keygen -t ed25519 -C "khaufillahmohammad@gmail.com"
+ssh-keyscan github.com >> ~/.ssh/known_hosts
 cat .ssh/id_ed25519.pub
 ```
 

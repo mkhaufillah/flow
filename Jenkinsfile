@@ -12,7 +12,7 @@ pipeline {
                     submoduleCfg: [],
                     userRemoteConfigs: [[url: 'git@github.com:mkhaufillah/flow.git', credentialsId: 'github-mkhaufillah']]
                 ])
-                sh 'll'
+                sh 'ls --all'
         //         sh 'if [[ "$(uname)" != *"Linux"* ]]; then exit 1; fi'
         //         sh 'if ! which unzip > /dev/null; then sudo apt update && sudo apt install -y unzip; fi'
         //         sh 'if ! which bun > /dev/null; then sudo curl -fsSL https://bun.sh/install | bash; fi'
