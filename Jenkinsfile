@@ -20,13 +20,13 @@ pipeline {
             }
         }
 
-        // stage('Deploy Flow Bun') {
-        //     steps {
-        //         withCredentials([string(credentialsId: 'deployment-key', variable: 'DEPLOYMENT_KEY')]) {
-        //             sh 'sudo echo $DEPLOYMENT_KEY'
+        stage('Deploy Flow Bun') {
+            steps {
+                withCredentials([string(credentialsId: 'deployment-key', variable: 'DEPLOYMENT_KEY')]) {
+                    sh 'sudo echo $DEPLOYMENT_KEY'
         //             sh 'sudo cp -f systemd/flow-bun.service /lib/systemd/system/flow-bun.service'
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
     }
 }
