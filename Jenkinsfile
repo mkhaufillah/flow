@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                sh 'pwd'
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: 'main']],

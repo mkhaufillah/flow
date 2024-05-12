@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/root/flow
+WorkingDirectory=/root/.jenkins/workspace/Flow/Deployment
 ExecStart=/root/.bun/bin/bun run index.ts
 Restart=on-failure
 
