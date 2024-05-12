@@ -13,10 +13,10 @@ pipeline {
                     userRemoteConfigs: [[url: 'git@github.com:mkhaufillah/flow.git', credentialsId: 'github-mkhaufillah']]
                 ])
                 sh 'ls --all'
-        //         sh 'if [[ "$(uname)" != *"Linux"* ]]; then exit 1; fi'
-        //         sh 'if ! which unzip > /dev/null; then sudo apt update && sudo apt install -y unzip; fi'
-        //         sh 'if ! which bun > /dev/null; then sudo curl -fsSL https://bun.sh/install | bash; fi'
-        //         sh 'sudo bun install'
+                sh 'if [[ "$(uname)" != *"Linux"* ]]; then exit 1; fi'
+                sh 'if ! which unzip > /dev/null; then sudo apt update && sudo apt install -y unzip; fi'
+                sh 'if ! which bun > /dev/null; then sudo su && curl -fsSL https://bun.sh/install | bash; fi'
+                sh 'sudo bun install'
             }
         }
 
@@ -24,7 +24,12 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'deployment-key', variable: 'DEPLOYMENT_KEY')]) {
                     sh 'sudo echo $DEPLOYMENT_KEY'
-        //             sh 'sudo cp -f systemd/flow-bun.service /lib/systemd/system/flow-bun.service'
+                    sh 'sudo cp -f systemd/flow-bun.service /lib/systemd/system/flow-bun.service'
+                    sh 'systemctl daemon-reload'
+                    sh 'systemctl restart flow-bun.service'
+                    sh 'sudo cp -f nginx/flow.filla.id /etc/nginx/sites-available/jenkins.filla.id'
+                    sh 'sudo nginx -t'
+                    sh 'sudo systemctl restart nginx'
                 }
             }
         }
