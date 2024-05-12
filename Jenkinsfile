@@ -15,8 +15,8 @@ pipeline {
                 sh 'ls --all'
                 sh 'if [[ "$(uname)" != *"Linux"* ]]; then exit 1; fi'
                 sh 'if ! which unzip > /dev/null; then sudo apt update && sudo apt install -y unzip; fi'
-                sh 'if ! which bun > /dev/null; then sudo su && curl -fsSL https://bun.sh/install | bash; fi'
-                sh 'sudo bun install'
+                sh 'if test -f /root/.bun; then sudo su && curl -fsSL https://bun.sh/install | bash; fi'
+                sh 'sudo /root/.bun/bin/bun install'
             }
         }
 
