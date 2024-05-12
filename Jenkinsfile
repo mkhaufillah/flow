@@ -27,7 +27,7 @@ pipeline {
                     sh 'sudo cp -f systemd/flow-bun.service /lib/systemd/system/flow-bun.service'
                     sh 'systemctl daemon-reload'
                     sh 'systemctl restart flow-bun.service'
-                    sh 'sudo cp -f nginx/flow.filla.id /etc/nginx/sites-available/jenkins.filla.id'
+                    sh 'sudo cp -f nginx/flow.filla.id /etc/nginx/sites-available/flow.filla.id'
                     sh 'sudo nginx -t'
                     sh 'sudo systemctl restart nginx'
                 }
